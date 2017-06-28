@@ -11,5 +11,8 @@ Check mul_comm: forall n m, n * m = m * n.
 Lemma difference_of_squares:
   forall a b, sq a - sq b = (a + b) * (a - b).
 Proof.
-
+  unfold sq; intros.
+  rewrite mul_sub_distr_l; repeat (rewrite mul_add_distr_r).
+  rewrite (mul_comm a b).
+  omega.
 Qed.

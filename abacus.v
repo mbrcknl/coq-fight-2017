@@ -7,5 +7,7 @@ Fixpoint abacus (m n: nat): nat :=
 Lemma abacus_plus:
   forall m n, abacus m n = m + n.
 Proof.
-
+  induction m; simpl; intros; auto.
+  rewrite <- IHm; clear IHm.
+  revert n; induction m; simpl; auto.
 Qed.

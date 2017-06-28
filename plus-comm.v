@@ -13,5 +13,10 @@ Infix "+" := plus.
 Lemma plus_comm:
   forall m n, m + n = n + m.
 Proof.
-
+  induction m; induction n; simpl in *; auto.
+  rewrite <- IHn; auto.
+  rewrite IHm; auto.
+  rewrite IHm.
+  rewrite <- IHn; simpl.
+  rewrite IHm; auto.
 Qed.

@@ -14,5 +14,7 @@ Check negb_even: forall n, negb (even n) = odd n.
 Lemma evenb_even:
   forall n, evenb n = even n.
 Proof.
-
+  induction n; auto.
+  rewrite even_succ.
+  simpl; rewrite IHn; auto.
 Qed.

@@ -17,5 +17,10 @@ Lemma equiv:
   forall n a b, slow a b n = fast a b n.
 Proof.
   induction n using lt_wf_ind; intros.
-
+  destruct n; simpl; auto.
+  rewrite (H n); try omega.
+  destruct n; simpl; auto.
+  rewrite (H n); try omega.
+  clear H; revert a b.
+  induction n; simpl; auto.
 Qed.

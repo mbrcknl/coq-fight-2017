@@ -9,5 +9,9 @@ Hint Constructors less_eq.
 Lemma le_less_eq_equiv:
   forall x y, less_eq x y <-> x <= y.
 Proof.
-
+  split.
+  induction 1; omega.
+  revert y; induction x; intros; auto.
+  inversion H; auto.
+  constructor; apply IHx; omega.
 Qed.
